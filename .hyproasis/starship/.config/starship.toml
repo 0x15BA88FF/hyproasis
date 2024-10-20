@@ -1,8 +1,12 @@
 format = """
-[](fg:bright-cyan)$username[](bg:bright-cyan fg:black)$hostname[](fg:bright-cyan) \
+[ ](bg:bright-cyan)$username[](bg:bright-cyan fg:black)$hostname[](fg:bright-cyan) \
 [](fg:bright-blue)$directory[](fg:bright-blue) \
-[](fg:green)$cmd_duration[](fg:green) \
 $character \
+"""
+
+right_format = """
+$git_branch$git_status \
+[](fg:green)$cmd_duration[ ](bg:green)
 """
 
 [username]
