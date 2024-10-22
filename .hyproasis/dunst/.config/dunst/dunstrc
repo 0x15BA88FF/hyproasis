@@ -1,0 +1,175 @@
+[global]
+monitor = 0
+follow = mouse # mouse, keyboard, none
+
+### Geometry ###
+width = 300 # Notification width
+height = 120
+origin = top-right
+offset = 8x8
+scale = 0
+notification_limit = 5 # 0 for unlimited
+
+### Progress bar ###
+progress_bar = true
+progress_bar_height = 10
+progress_bar_frame_width = 0
+progress_bar_min_width = 125
+progress_bar_corner_radius = 10 # 0 to disable
+icon_corner_radius = 5
+indicate_hidden = yes
+transparency = 10
+padding = 8
+horizontal_padding = 8
+text_icon_padding = 10
+frame_width = 2
+frame_color = "#313244"
+gap_size = 5
+separator_color = frame # auto, foreground, frame
+sort = yes # Sort messages by urgency
+idle_threshold = 120
+
+### Text ###
+font = "JetBrainsMono Nerd Font 9"
+line_height = 3
+markup = full # Options: full, no
+format = "%a\n<b>%s</b>\n%b" # Message format
+alignment = left # Options: left, center, right
+vertical_alignment = top # Options: top, center, bottom
+show_age_threshold = -1 # -1 to disable
+ellipsize = end # Options: start, middle, end
+ignore_newline = no
+stack_duplicates = true
+hide_duplicate_count = false
+show_indicators = yes
+
+### Icons ###
+enable_recursive_icon_lookup = true
+icon_theme = "Tela-circle-dracula", "Adwaita"
+icon_path = /usr/share/icons/Tela-circle-dracula/16/actions:/usr/share/icons/Tela-circle-dracula/16/apps:/usr/share/icons/Tela-circle-dracula/16/devices:/usr/share/icons/Tela-circle-dracula/16/mimetypes:/usr/share/icons/Tela-circle-dracula/16/panel:/usr/share/icons/Tela-circle-dracula/16/places:/usr/share/icons/Tela-circle-dracula/16/status
+icon_position = left # Options: left, right, top, off
+min_icon_size = 42
+max_icon_size = 42
+
+### History ###
+sticky_history = yes
+history_length = 100
+
+### Misc/Advanced ###
+dmenu = rofi -config "~/.config/rofi/controls.rasi" -dmenu -p dunst:
+browser = /usr/bin/xdg-open
+always_run_script = true
+title = notification
+class = notification
+corner_radius = 10
+ignore_dbusclose = false
+
+### Wayland ###
+# layer = top # Options: top, overlay
+force_xwayland = false
+
+### Legacy ###
+force_xinerama = false
+
+### Mouse Actions ###
+mouse_left_click = do_action, close_current
+mouse_right_click = close_current
+mouse_middle_click = close_all
+
+[experimental]
+per_monitor_dpi = false
+
+# Custom message rules can be defined below
+[transient_history_ignore]
+match_transient = yes
+history_ignore = yes
+
+[fullscreen_delay_everything]
+fullscreen = pushback # Options: show, delay, pushback
+
+[fullscreen_show_critical]
+msg_urgency = critical
+fullscreen = show
+
+#[script-test]
+#    summary = "*script*"
+#    script = dunst_test.sh
+
+[history-ignore]
+appname = "*nohistory*"
+history_ignore = yes
+format = "%a\n%b"
+
+[skip-display]
+appname = "*hidden*"
+skip_display = yes
+
+[stack-mpdris]
+appname = "Music Player Daemon"
+history_ignore = yes
+set_stack_tag = "music"
+format = "<b>%s</b>\n%b"
+
+[stack-network]
+appname = "NetworkManager Applet"
+history_ignore = yes
+set_stack_tag = "network"
+format = "<b>%s</b>\n%b"
+
+[stack-brightness]
+appname = "brightness"
+history_ignore = yes
+set_stack_tag = "brightness"
+format = "<b>%s</b>\n%b"
+icon = "$HOME/.config/dunst/icons/brightness.svg"
+
+[stack-volume]
+appname = "volume*"
+history_ignore = yes
+set_stack_tag = "volume"
+format = "<b>%s</b>\n%b"
+default_icon = "$HOME/.config/dunst/icons/volume.svg"
+
+[stack-mic]
+appname = "mic*"
+history_ignore = yes
+set_stack_tag = "mic"
+format = "<b>%s</b>\n%b"
+default_icon = "$HOME/.config/dunst/icons/mic.svg"
+
+[stack-keyboard]
+appname = "keyboard"
+history_ignore = yes
+set_stack_tag = "keyboard"
+format = "<b>%s</b>\n%b"
+default_icon = "$HOME/.config/dunst/icons/keyboard.svg"
+
+[stack-shader]
+appname = "shader"
+history_ignore = yes
+set_stack_tag = "shader"
+format = "<b>%s</b>\n%b"
+default_icon = "$HOME/.config/dunst/icons/shader.svg"
+
+[urgency_low]
+timeout = 3
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+frame_color = "#313244"
+default_icon = "$HOME/.config/dunst/icons/notification.svg"
+
+[urgency_normal]
+timeout = 5
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+frame_color = "#89b4fa"
+default_icon = "$HOME/.config/dunst/icons/notification.svg"
+
+[urgency_critical]
+timeout = 0
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+frame_color = "#f38ba8"
+default_icon = "$HOME/.config/dunst/icons/critical.svg"
+
+# vim: ft=cfg
