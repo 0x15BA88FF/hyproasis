@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+
+# Enhanced Tools
+pacman -Qi zoxide &>/dev/null && alias cd="z"
+pacman -Qi bat &>/dev/null && alias cat="bat"
+pacman -Qi btop &>/dev/null && alias top="btop"
+pacman -Qi yay &>/dev/null && alias pacman="yay"
+pacman -Qi neovim &>/dev/null && alias vim="nvim"
+pacman -Qi paru &>/dev/null && alias pacman="paru"
+pacman -Qi eza &>/dev/null && alias ls="eza --icons=auto"
+pacman -Qi exa &>/dev/null && alias ls="exa --icons=auto"
+pacman -Qi ripgrep &>/dev/null && alias grep="rg --color=auto"
+
+# Package Management
+alias pac='sudo pacman -S'
+alias unpac='sudo pacman -Rns'
+alias pacup='sudo pacman -Syyu --nocombinedupgrade'
+alias paclean="sudo pacman -Rns $(pacman -Qtdq) && sudo pacman -Scc"
+alias pacmirror="sudo reflector --verbose --latest 5 --age 6 --sort rate --save /etc/pacman.d/mirrorlist"
+
+# Helpful Network Commands
+alias cn='ping -c 5 8.8.8.8'
+alias wifilist='nmcli dev wifi'
+alias wificonnect='nmcli dev wifi connect'
+alias wifidown='nmcli con down wifi'
+alias wlanon='rfkill unblock wlan'
+alias wlanoff='rfkill block wlan'
+alias ips='ip link show'
+
+# File Operations
+alias cls='clear'
+alias xmod='chmod -x'
+alias wmod='chmod -w'
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -vI"
+alias rsync="rsync -vrPlu"
+
+# Directory Navigation
+alias ..="cd .."
+alias .2="cd ../.."
+alias .3="cd ../../.."
+alias .4="cd ../../../.."
+alias .5="cd ../../../../.."
+
+# List and View
+alias ls="ls -hN --color=auto --group-directories-first"
+alias l='ls -l'
+alias la="ls -al"
+alias ll="ls -l"
+alias llf='ls -f'
+alias lnogit='ls --git-ignore'
+
+# Environment and Editor
+alias pyenv="source ./venv/bin/activate"
+alias vi='vim'
+alias v='vi'
+alias t='tmux'
+alias ta='tmux attach'
+alias python="python3"
+alias visudo='sudo EDITOR=$EDITOR visudo'
+
+# YouTube Downloading
+alias ytmp3='yt -f mp3'
+alias ytmp4='yt -f mp4'
+alias yt="yt-dlp --embed-metadata -i"
+
+# System Info and Utilities
+alias fetch="fastfetch"
+alias please='sudo'
+alias fucking='sudo'
+alias sayonara='shutdown now'
+alias allmighty="git"
+alias universal="git"
+
+# Verbose command aliases
+alias ip="ip -color=auto"
+alias diff="diff --color=auto"

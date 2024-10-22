@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+export GPG_TTY=$(tty)
+export MOZ_USE_XINPUT2=1
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+export GOPATH="$XDG_DATA_HOME/go"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GOMODCACHE="$XG_CACHE_HOME/go/mod"
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+export STARSHIP_CACHE="$XDG_CACHE_HOME/starship"
+export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
+export RIPGREP_CONFIG_PATH="$XDG_CACHE_HOME/.ripgreprc"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/.node_history"
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
+export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible/ansible.cfg"
+
+export HISTSIZE="500"
+export HISTFILESIZE="10000"
+export PYTHONIOENCODING="UTF-8"
+export HISTCONTROL=ignoredups:erasedups
+export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..|fetch)"
+
+export NODE_REPL_MODE="sloppy"
+export NODE_REPL_HISTORY_SIZE="${HISTSIZE}"
