@@ -1,3 +1,4 @@
+@import "./themes/theme.css";
 @import "../../.cache/wal/colors-wlogout.css";
 
 * {
@@ -20,7 +21,6 @@ button {
     background-size: 20%;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: @background;
 }
 
 button:hover {
