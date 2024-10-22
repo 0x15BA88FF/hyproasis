@@ -9,9 +9,9 @@ HYPHEN_INSENSITIVE=true
 ENABLE_CORRECTION=true
 CASE_SENSITIVE=false
 
-for tool in fzf zoxide starship; do
-    pacman -Qi "$tool" &>/dev/null && eval "$("$tool" --zsh)"
-done
+pacman -Qi fzf &>/dev/null && eval "$(fzf --zsh)"
+pacman -Qi zoxide &>/dev/null && eval "$(zoxide init zsh)"
+pacman -Qi starship &>/dev/null && eval "$(starship init zsh)"
 
 load_aliasrc() {
     [[ -f "$HOME/.config/shell/aliasrc" ]] && source "$HOME/.config/shell/aliasrc"
