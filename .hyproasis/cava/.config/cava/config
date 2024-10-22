@@ -1,3 +1,5 @@
+; See https://github.com/karlstav/cava/blob/master/example_files/config for more information
+
 [general]
 framerate = 60
 
@@ -23,10 +25,10 @@ show_idle_bar_heads = 1
 
 
 [color]
-foreground = default
+foreground = blue
 background = default
 
-gradient = 1
+gradient = 0
 
 gradient_color_1 = '#94e2d5'
 gradient_color_2 = '#89dceb'
