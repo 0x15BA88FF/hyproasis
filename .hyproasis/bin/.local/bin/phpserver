@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+port="${1:-4000}";
+ip="127.0.0.1";
+php -S "${ip}:${port}";
+echo "Running php server on http://${ip}:${port}/"
