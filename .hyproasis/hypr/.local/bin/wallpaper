@@ -49,23 +49,28 @@ load_wallpaper() {
 	echo "$cache_index" >"$WALLPAPER_STATE_DIR/cache_index"
 }
 
+set_shader() {
+	echo "[ INFO ] Applying shader $1"
+	hyprshade toggle "$SHADERS_PATH/$1"
+}
+
 set_wallpaper() {
 	WALLPAPER="$1"
-	# ACTIVE_SHADER=$(hyprshade current)
+	ACTIVE_SHADER=$(hyprshade current)
 
 	echo "[ INFO ] Applying wal colors"
 	wal --cols16 -n -q -b "$BACKGROUND_COLOR" --fg "$FOREGROUND_COLOR" --saturate $SATURATION -i "$WALLPAPER"
 
-	echo "[ INFO ] Applying wallpaper $WALLPAPER"
-	hyprctl hyprpaper unload all
-	hyprctl hyprpaper preload "$WALLPAPER"
-	hyprctl hyprpaper wallpaper "$MONITOR, $WALLPAPER"
-
 	echo "[ INFO ] Creating wallpaper link"
+	echo "$WALLPAPER --> $WALLPAPERS_PATH/background"
 	ln -f "$WALLPAPER" "$WALLPAPERS_PATH/background"
 
-	# echo "[ INFO ] Applying shader $ACTIVE_SHADER"
-	# hyprshade toggle "$SHADERS_PATH/$ACTIVE_SHADER.glsl"
+	echo "[ INFO ] Applying wallpaper $WALLPAPER"
+	hyprctl hyprpaper unload all
+	hyprctl hyprpaper preload "$WALLPAPERS_PATH/background"
+	hyprctl hyprpaper wallpaper "$MONITOR, $WALLPAPERS_PATH/background"
+
+	set_shader "$ACTIVE_SHADER"
 }
 
 set_wallpaper_by_index() {

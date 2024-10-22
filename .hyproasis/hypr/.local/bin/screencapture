@@ -1,13 +1,16 @@
 #!/bin/bash
 
-for tool in hyprshot swappy tesseract wl-copy rofi; do
-	if ! command -v $tool &>/dev/null; then
-		notify-send "$tool is not installed."
-		exit 1
-	fi
-done
+check_tools() {
+	for tool in "$@"; do
+		command -v "$tool" &>/dev/null || {
+			notify-send "$tool is not installed."
+			exit 1
+		}
+	done
+}
 
 screenshot() {
+	check_tools hyprshot swappy tesseract wl-copy
 	screenshot_filename="Screenshot_$(date +%Y-%m-%d-%H-%M-%S).png"
 	hyprshot "$2" -s -m "$1" -o "/tmp" -f "$screenshot_filename"
 	sleep 1.0
@@ -16,21 +19,21 @@ screenshot() {
 }
 
 screenrecord() {
-	echo "Recording Nothing"
-	# record_path="$HOME/Pictures/Screenshots/"
-	# record_filename="Screenrecord_$(date +%Y-%m-%d-%H-%M-%S).mp4"
+	check_tools hyprshot
+	echo "Recording..."
 }
 
 ocr() {
-	hyprshot -m region -o /tmp/ -f "$(date +%s)_$(openssl rand -hex 4).png" -s
+	img_path="/tmp/$(date +%s)_$(openssl rand -hex 4).png"
+	check_tools hyprshot tesseract wl-copy
+	hyprshot -m region -o /tmp/ -f "$img_path" -s
 	tesseract /tmp/*.png - | wl-copy && notify-send "Text extraction successful" || notify-send "Text extraction failed"
 	rm /tmp/*.png
 }
 
 capturemenu() {
-	config="$HOME/.config/rofi/controls.rasi"
-
-	options=(
+	local DMENU_CONFIG="$HOME/.config/rofi/controls.rasi"
+	local options=(
 		"Screenshot Screen              :screenshot output -z"
 		"Screenshot Window              :screenshot window -z"
 		"Screenshot Region              :screenshot region -z"
@@ -44,33 +47,28 @@ capturemenu() {
 		"Record Region (No Sound)       :screenrecord"
 	)
 
-	formatted_options=""
-
+	local formatted_options=""
 	for option in "${options[@]}"; do
 		IFS=':' read -r label command <<<"$option"
 		formatted_options+="$label\n"
 	done
 
-	formatted_options=${formatted_options%\\n}
-
-	selected=$(echo -e "$formatted_options" | rofi -config "$config" -dmenu -p "Select an option:")
-
+	selected=$(echo -e "${formatted_options%\\n}" | rofi -config "$DMENU_CONFIG" -dmenu -p "Select an option:")
 	if [ -n "$selected" ]; then
 		for option in "${options[@]}"; do
 			IFS=':' read -r label command <<<"$option"
-			if [[ "$selected" == "$label" ]]; then
+			[[ "$selected" == "$label" ]] && {
 				sleep 0.3
 				eval "$command" &
 				exit 0
-			fi
+			}
 		done
 	fi
 }
 
 case "$1" in
-"menu") capturemenu "$2" ;;
-"screenshot") screenshot "$2" -z ;;
-"record") screenrecord "$2" ;;
-"ocr") ocr ;;
+menu) capturemenu ;;
+screenshot) screenshot "$2" -z ;;
+ocr) ocr ;;
 *) exit 1 ;;
 esac
