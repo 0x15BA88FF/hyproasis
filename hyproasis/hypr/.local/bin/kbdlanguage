@@ -1,0 +1,7 @@
+#!/bin/bash
+
+DMENU_CONFIG="$HOME/.config/rofi/controls.rasi"
+
+case $1 in
+menu) rofi -config "$DMENU_CONFIG" -show filebrowser -p "Select an option:" ;;
+esac

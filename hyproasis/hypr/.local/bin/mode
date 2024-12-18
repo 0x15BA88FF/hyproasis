@@ -1,0 +1,95 @@
+#!/bin/bash
+
+active_mode() {
+    local pid_file="/tmp/systemd_inhibit.pid"
+
+    if [[ "$1" == "on" ]]; then
+        systemd-inhibit --what=idle --mode=block tail -f /dev/null & echo $! > "$pid_file"
+    elif [[ "$1" == "off" ]]; then
+        kill "$(cat $pid_file)" && rm -f "$pid_file"
+    fi
+}
+
+game_mode() {
+    if [[ "$1" == "on" ]]; then
+        swww kill 
+        killall waybar 
+        wallpaper pause
+        hyprctl --batch "keyword general:gaps_in 0;"
+        hyprctl --batch "keyword general:gaps_out 0;"
+        hyprctl --batch "keyword animations:enabled 0;"
+        hyprctl --batch "keyword decoration:rounding 0"
+        hyprctl --batch "keyword general:border_size 0;"
+        hyprctl --batch "keyword decoration:drop_shadow 0;"
+        hyprctl --batch "keyword decoration:blur:passes 0;"
+    elif [[ "$1" == "off" ]]; then
+        hyprctl reload
+        wallpaper play &
+        swww-daemon --format xrgb &
+    fi
+}
+
+dev_mode() {
+    if [[ "$1" == "on" ]]; then
+        killall waybar
+        wallpaper pause
+        hyprctl --batch "keyword animations:enabled 0;"
+        hyprctl --batch "keyword general:border_size 0;"
+    elif [[ "$1" == "off" ]]; then
+        hyprctl reload
+    fi
+}
+
+disable() {
+    active_mode off
+    game_mode off
+    dev_mode off
+}
+
+rofi_menu() {
+    local DMENU_CONFIG="$HOME/.config/rofi/controls.rasi"
+
+    local options=(
+        "Disable All                 :disable"
+        "Active Mode                 :active_mode on"
+        "Game Mode                   :game_mode on"
+        "Dev Mode                    :dev_mode on"
+    )
+
+    local formatted_options=""
+    for option in "${options[@]}"; do
+        IFS=':' read -r label command <<<"$option"
+        formatted_options+="$label\n"
+    done
+
+    local selected=$(echo -e "${formatted_options%\\n}" | rofi -config "$DMENU_CONFIG" -dmenu -p "Select an option:")
+
+    if [ -n "$selected" ]; then
+        for option in "${options[@]}"; do
+            IFS=':' read -r label command <<<"$option"
+            [[ "$selected" == "$label" ]] && {
+                sleep 0.3
+                eval "$command" &
+                exit 0
+            }
+        done
+    fi
+}
+
+case "$1" in
+"disable")  disable ;;
+"active") active_mode $2 ;;
+"game") game_mode $2 ;;
+"dev") dev_mode $2 ;;
+"menu") rofi_menu ;;
+*)
+    echo "Usage: $0 [command] [on|off]"
+    echo "Commands:"
+    echo "    disable   Disable mode"
+    echo "    active    Set active (idle inhibiting) mode"
+    echo "    game      Set game mode"
+    echo "    dev       Set dev mode"
+    echo "    menu      Open rofi menu"
+    exit 1
+;;
+esac

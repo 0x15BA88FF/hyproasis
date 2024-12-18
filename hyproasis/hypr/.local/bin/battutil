@@ -1,0 +1,52 @@
+#!/bin/bash
+
+FULL_LEVEL=90
+LOW_LEVEL=40
+CRITICAL_LEVEL=30
+NOTIFICATION_INTERVAL=300
+
+set_power_profile() {
+    case "$1" in
+        balanced) echo "saving power" ;;
+        power-saving) echo "battery go brrr" ;;
+    esac
+}
+
+alarm_notify() {
+    while true; do
+        notify-send $@
+        sleep $NOTIFICATION_INTERVAL
+    done
+    
+}
+
+watch_daemon() {
+    local was_charging
+    local has_battery=true
+    local prev_battery_percentage
+
+    [[ !$has_battery ]] && echo "battery was not detected"; exit 1
+
+    while true; do
+        local has_battery=true
+        local battery_percent=0
+        
+        if [[ ! $is_charging ]]; then
+            if [[ $battery_percent -ge $FULL_LEVEL ]]; then
+                set_power_profile balanced
+                alarm_notify "your battery is full"
+            elif [[ $battery_percent -le $LOW_LEVEL ]]; then
+                set_power_profile power-saving
+                alarm_notify "your battery is low"
+            elif [[ $battery_percent -le $CRITICAL_LEVEL ]]; then
+                set_power_profile power-saving
+                alarm_notify "your battery is low AF"
+            fi
+        else
+            set_power_profile balanced
+            alarm_notify "your battery is not charging"
+        fi
+
+        sleep 5
+    done
+}

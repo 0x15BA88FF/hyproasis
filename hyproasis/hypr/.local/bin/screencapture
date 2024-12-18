@@ -1,0 +1,203 @@
+#!/bin/bash
+
+SCREENSHOT_DIR="${XDG_PICTURES_DIR:-$HOME/Pictures}/Screenshots"
+SCREENRECORD_DIR="${XDG_VIDEOS_DIR:-$HOME/Videos}/Capture"
+CURRENT_RECORDING="/tmp/current_recording"
+PID_FILE="/tmp/screenrecord.pid"
+TMP_DIR="/tmp"
+
+check_tools() {
+    for tool in "$@"; do
+        if ! command -v "$tool" &>/dev/null; then
+            notify-send "Error" "Required tool '$tool' not found"
+            exit 1
+        fi
+    done
+}
+
+countdown() {
+    local seconds=$1
+    if [ "$seconds" -gt 0 ]; then
+        for ((i = seconds; i > 0; i--)); do
+            notify-send -e -a screencapture -u low -t 1000 "Starting in..." "$i seconds"
+            sleep 1
+        done
+    fi
+}
+
+screenshot() {
+    check_tools hyprshot swappy wl-copy
+    mkdir -p "$SCREENSHOT_DIR"
+
+    local delay=""
+    local mode="$1"
+    shift
+
+    while getopts "t:z" opt; do
+        case $opt in
+            t) delay="$OPTARG" ;;
+            z) freeze="-z" ;;
+        esac
+    done
+
+    countdown "$delay"
+
+    local screenshot_filename="Screenshot_$(date +%Y-%m-%d-%H%M%S).png"
+    hyprshot -s -m "$mode" -o "$SCREENSHOT_DIR" -f "$screenshot_filename" $freeze
+
+    local action=$(notify-send "Screenshot Saved" \
+        --action Notate \
+        --icon "$SCREENSHOT_DIR/$screenshot_filename" \
+        "Image saved in clipboard and $SCREENSHOT_DIR/$screenshot_filename")
+    [[ "$action" == 0 ]] && swappy -f "$SCREENSHOT_DIR/$screenshot_filename" &
+}
+
+is_recording() {
+    [ -f "$PID_FILE" ] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null
+}
+
+start_recording() {
+    check_tools wf-recorder slurp
+    mkdir -p "$SCREENRECORD_DIR"
+
+    local mode="$1"
+    local delay=0
+    local audio=true
+
+    shift
+    while getopts "t:n" opt; do
+        case $opt in
+            t) delay="$OPTARG" ;;
+            n) audio=false ;;
+        esac
+    done
+
+    countdown "$delay"
+
+    local geometry=""
+    [ "$mode" = "region" ] && geometry=$(slurp)
+
+    local filename="Screenrecord_$(date +%Y-%m-%d-%H%M%S).mp4"
+    echo "$SCREENRECORD_DIR/$filename" > "$CURRENT_RECORDING"
+
+    if $audio; then
+        wf-recorder ${geometry:+-g "$geometry"} -f "$SCREENRECORD_DIR/$filename" &
+    else
+        wf-recorder ${geometry:+-g "$geometry"} --audio=0 -f "$SCREENRECORD_DIR/$filename" &
+    fi
+
+    echo $! > "$PID_FILE"
+    notify-send "Recording Started" "Saving to: $filename"
+}
+
+stop_recording() {
+    if is_recording; then
+        local pid=$(cat "$PID_FILE")
+        local file=$(cat "$CURRENT_RECORDING")
+        kill -SIGINT "$pid"
+        rm -f "$PID_FILE" "$CURRENT_RECORDING"
+        notify-send "Recording Stopped" "Saved to: $file"
+    fi
+}
+
+ocr() {
+    check_tools hyprshot tesseract wl-copy
+    local delay=0
+
+    while getopts "t:" opt; do
+        case $opt in
+            t) delay="$OPTARG" ;;
+        esac
+    done
+
+    countdown "$delay"
+
+    local img_path="$TMP_DIR/$(date +%s)_$(openssl rand -hex 4).png"
+    trap "rm -f $img_path" EXIT
+    hyprshot -m region -o "$TMP_DIR" -f "$img_path" -s
+
+    if tesseract "$img_path" - | wl-copy; then
+        notify-send "Text extraction successful" "Copied to clipboard"
+    else
+        notify-send "Text extraction failed"
+    fi
+}
+
+fzf_menu() {
+    check_tools fzf
+
+    local options
+    if is_recording; then
+        options="Stop Recording"
+    else
+        options="Screenshot Screen\nScreenshot Window\nScreenshot Region\nRecord Screen\nRecord Region\nRecord Screen (No Audio)\nRecord Region (No Audio)\nOCR Text Extraction"
+    fi
+
+    local selected=$(echo -e "$options" | fzf --height=40% --border --prompt="Select capture mode: ")
+
+    case "$selected" in
+        "Screenshot Screen") screenshot output -z ;;
+        "Screenshot Window") screenshot window -z ;;
+        "Screenshot Region") screenshot region -z ;;
+        "Record Screen") start_recording screen ;;
+        "Record Region") start_recording region ;;
+        "Record Screen (No Audio)") start_recording screen -n ;;
+        "Record Region (No Audio)") start_recording region -n ;;
+        "OCR Text Extraction") ocr ;;
+        "Stop Recording") stop_recording ;;
+    esac
+}
+
+rofi_menu() {
+    local DMENU_CONFIG="$HOME/.config/rofi/controls.rasi"
+
+    local options
+    if is_recording; then
+        options=("Stop Recording                   :stop_recording")
+    else
+        options=(
+            "Screenshot Screen              :screenshot output -z"
+            "Screenshot Window              :screenshot window -z"
+            "Screenshot Region              :screenshot region -z"
+            "OCR Text Extraction            :ocr"
+            "Screenshot Screen (5s)         :screenshot output -t 5 -z"
+            "Screenshot Window (5s)         :screenshot window -t 5 -z"
+            "Screenshot Region (5s)         :screenshot region -t 5 -z"
+            "Record Screen                  :start_recording screen"
+            "Record Region                  :start_recording region"
+            "Record Screen (No Audio)       :start_recording screen -n"
+            "Record Region (No Audio)       :start_recording region -n"
+            "Record Screen (5s delay)       :start_recording screen -t 5"
+            "Record Region (5s delay)       :start_recording region -t 5"
+        )
+    fi
+
+    local formatted_options=""
+    for option in "${options[@]}"; do
+        IFS=':' read -r label command <<<"$option"
+        formatted_options+="$label\n"
+    done
+
+    local selected=$(echo -e "${formatted_options%\\n}" | rofi -config "$DMENU_CONFIG" -dmenu -p "Select an option:")
+
+    if [ -n "$selected" ]; then
+        for option in "${options[@]}"; do
+            IFS=':' read -r label command <<<"$option"
+            [[ "$selected" == "$label" ]] && {
+                sleep 0.3
+                eval "$command" &
+                exit 0
+            }
+        done
+    fi
+}
+
+case "$1" in
+    menu) rofi_menu ;;
+    fzf) fzf_menu ;;
+    screenshot) shift; screenshot "$@" ;;
+    start-record) shift; start_recording "$@" ;;
+    ocr) shift; ocr "$@" ;;
+    stop-record) stop_recording ;;
+    *) rofi_menu ;;
+esac

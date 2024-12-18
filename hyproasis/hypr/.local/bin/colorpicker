@@ -1,0 +1,38 @@
+#!/bin/bash
+
+pickermenu() {
+	DMENU_CONFIG="$HOME/.config/rofi/controls.rasi"
+
+	options=(
+		"HEX Color Picker               :hyprpicker -f hex -a"
+		"RGB Color Picker               :hyprpicker -f rgb -a"
+		"HSV Color Picker               :hyprpicker -f hsv -a"
+		"HSL Color Picker               :hyprpicker -f hsl -a"
+		"CMYK Color Picker              :hyprpicker -f cmyk -a"
+	)
+
+	formatted_options=""
+	for option in "${options[@]}"; do
+		IFS=':' read -r label command <<<"$option"
+		formatted_options+="$label\n"
+	done
+
+	selected=$(echo -e "${formatted_options%\\n}" | rofi -config "$DMENU_CONFIG" -dmenu -p "Select an option:")
+
+	if [ -n "$selected" ]; then
+		for option in "${options[@]}"; do
+			IFS=':' read -r label command <<<"$option"
+			[[ "$selected" == "$label" ]] && {
+				sleep 0.3
+				eval "$command" &
+				exit 0
+			}
+		done
+	fi
+}
+
+case $1 in
+menu) pickermenu ;;
+hex | rgb | hsl | hsv | cmyk) hyprpicker -f "${1}" -a ;;
+*) echo "Usage: $0 {menu|hex|rgb|hsl|hsv|cmyk}" ;;
+esac

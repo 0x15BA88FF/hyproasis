@@ -1,0 +1,22 @@
+#!/bin/bash
+
+DMENU_CONFIG="$HOME/.config/rofi/clipboard.rasi"
+
+case $1 in
+copy)
+	cliphist list |
+		rofi -dmenu -theme-str "entry { placeholder: \"Copy...\";}" -config "$DMENU_CONFIG" |
+		cliphist decode | wl-copy
+	;;
+delete)
+	cliphist list |
+		rofi -dmenu -theme-str "entry { placeholder: \"Delete...\";}" -config "$DMENU_CONFIG" |
+		cliphist delete
+	;;
+clear)
+	if [[ $(echo -e "Yes\nNo" |
+		rofi -dmenu -theme-str "entry { placeholder: \"Clear Clipboard History?\";}" -config "$DMENU_CONFIG") == "Yes" ]]; then
+		cliphist wipe
+	fi
+	;;
+esac

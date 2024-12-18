@@ -1,0 +1,50 @@
+#!/bin/bash
+
+SHADER_DIR="$HOME/.config/hypr/shaders/"
+DMENU_CONFIG="$HOME/.config/rofi/controls.rasi"
+
+shadermenu() {
+	options=()
+
+	options+=("Disable Shader                       :hyprshade off")
+	options+=("Toggle Blue Light Filter Shader      :hyprshade toggle blue-light-filter")
+	options+=("Toggle Vibrance Shader               :hyprshade toggle vibrance")
+
+	while IFS= read -r -d '' shader_file; do
+		shader_name=$(basename "$shader_file")
+		options+=("Toggle $shader_name       :hyprshade toggle \"$shader_file\"")
+	done < <(find -L "$SHADER_DIR" -type f -iregex '.*\.\(glsl\|shader\|frag\)$' -print0)
+
+	if [ ${#options[@]} -eq 0 ]; then
+		echo "No shaders found in $SHADER_DIR"
+		exit 1
+	fi
+
+	formatted_options=""
+	for option in "${options[@]}"; do
+		IFS=':' read -r label command <<<"$option"
+		formatted_options+="$label\n"
+	done
+
+	formatted_options=${formatted_options%\\n}
+
+	selected=$(echo -e "$formatted_options" | rofi -config "$DMENU_CONFIG" -dmenu -p "Select a shader option:")
+
+	if [ -n "$selected" ]; then
+		for option in "${options[@]}"; do
+			IFS=':' read -r label command <<<"$option"
+			if [[ "$selected" == "$label" ]]; then
+				sleep 0.3
+				eval "$command" &
+				exit 0
+			fi
+		done
+	fi
+}
+
+case "$1" in
+"menu") shadermenu ;;
+"off") hyprshade of ;;
+"blue-light-filter") hyprshade toggle blue-light-filter ;;
+"vibrance") hyprshade toggle vibrance ;;
+esac

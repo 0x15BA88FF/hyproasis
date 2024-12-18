@@ -1,0 +1,6 @@
+#!/bin/bash
+
+DMENU_CONFIG="$HOME/.config/rofi/emoji.rasi"
+ROFIMOJI_PARAMS="-a clipboard --hidden-descriptions"
+
+rofi -config "$DMENU_CONFIG" -modi "emoji:rofimoji -f $1  $ROFIMOJI_PARAMS" -show emoji

@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+waybar &
+waybar --config ~/.config/waybar/docker.jsonc --style ~/.config/waybar/docker.css &
