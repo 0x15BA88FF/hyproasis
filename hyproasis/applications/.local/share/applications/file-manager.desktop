@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=File Manager
+Exec=nautilus
+Terminal=false
+NoDisplay=true
+StartupWMClass=files

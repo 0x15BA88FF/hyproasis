@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Screen Capture
+Exec=screencapture menu
+NoDisplay=false
+Terminal=false

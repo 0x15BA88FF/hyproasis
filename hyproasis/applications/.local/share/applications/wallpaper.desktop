@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Wallpaper Selector
+Exec=wallpaper menu
+NoDisplay=false
+Terminal=false

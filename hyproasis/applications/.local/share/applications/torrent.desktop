@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Torrent
+Exec=ls
+NoDisplay=true
+Terminal=true
+StartupWMClass=torrnet

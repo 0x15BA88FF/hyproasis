@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=System Monitor
+Type=Application
+Exec=btop
+Terminal=true
+NoDisplay=true
+StartupWMClass=top

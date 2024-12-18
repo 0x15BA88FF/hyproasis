@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=RSS News Feed
+Exec=newsboat
+Terminal=false
+NoDisplay=true
+StartupWMClass=rssfeed

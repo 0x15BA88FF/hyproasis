@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Mode Selector
+Exec=mode menu
+NoDisplay=false
+Terminal=false
