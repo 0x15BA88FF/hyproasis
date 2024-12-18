@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# /usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+
+export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH="$HOME/npm/bin:$PATH"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$CARGO_HOME/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
+export PATH="$XDG_BIN_HOME:$PATH"

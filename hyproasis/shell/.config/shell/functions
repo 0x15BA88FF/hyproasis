@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+
+
+cdl() { cd "$@" && l; }
+path() { echo -e ${PATH//:/\\n}; }
+man() { /usr/bin/man "$1" || tldr "$1"; }
+mkcd() { mkdir -p "$1" && cd "$1" || exit; }
+
+fv() { vim "$(find . -type f | fzf)"; }
+fcd() { cd "$(find . -type d | fzf)" && ls; }
+
+tmx() {
+    tmux list-sessions &>/dev/null || tmux new-session;
+    tmux attach-session -t "$(tmux list-sessions -F "#{session_name}" | fzf --exit-0)" || echo "No sessions found."
+}

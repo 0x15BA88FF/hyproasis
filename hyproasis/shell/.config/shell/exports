@@ -1,0 +1,53 @@
+[[ -n "$SSH_CONNECTION" ]] && export EDITOR='vim' || export EDITOR='nvim'
+export PAGER="less"
+export FILE="yazi"
+export PAGER="less"
+
+export RUST_BACKTRACE=1
+export MOZ_USE_XINPUT2=1
+export NODE_REPL_MODE="sloppy"
+export PYTHONIOENCODING="UTF-8"
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export BASHDOTDIR="$XDG_CONFIG_HOME/bash"
+export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgreprc"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
+export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible/ansible.cfg"
+
+export LESSHISTFILE="-"
+export GOPATH="$XDG_DATA_HOME/go"
+export BUN_INSTALL="$XDG_DATA_HOME/bun"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export npm_config_prefix="$XDG_DATA_HOME"
+export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/.node_history"
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
+
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+export GOMODCACHE="$XG_CACHE_HOME/go/mod"
+export ANDROID_HOME="$XDG_DATA_HOME/android"
+export STARSHIP_CACHE="$XDG_CACHE_HOME/starship"
+
+export HISTSIZE=10000
+export SAVEHIST=10000
+export HISTFILESIZE=10000
+export NODE_REPL_HISTORY_SIZE=10000
+export HISTCONTROL=ignoredups:erasedups
+export HISTORY_IGNORE="(ls|pwd|exit|sudo reboot|history|fetch)"
+
+export CLICOLOR=1
+export TERM=xterm-256color
+export GTK_OVERLAY_SCROLLING=0
+export GREP_OPTIONS="--color=always"
+export _JAVA_AWT_WM_NONREPARENTING=1
+export NAVI_FZF_OVERRIDES="--height 40%"
+export NAVI_FZF_OVERRIDES_VAR="--height 30%"
+export LS_COLORS="di=34:fi=0:ln=36:pi=33:so=32:bd=46;34:cd=43;34:or=31;37"
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
+export FZF_DEFAULT_OPTS="--height 50% --tmux bottom,40% --layout reverse --border top"
