@@ -1,0 +1,12 @@
+{
+    "custom/wallpaper": {
+        "format": "󰸉",
+        "tooltip-format": "󰆊 switch wallpaper",
+        "on-click": "$HOME/.local/bin/wallpaper next",
+        "on-click-right": "$HOME/.local/bin/wallpaper menu",
+        "on-click-middle": "$HOME/.local/bin/wallpaper toggle",
+        "on-scroll-up": "$HOME/.local/bin/wallpaper next",
+        "on-scroll-down": "$HOME/.local/bin/wallpaper prev",
+        "interval": "once",
+    },
+}

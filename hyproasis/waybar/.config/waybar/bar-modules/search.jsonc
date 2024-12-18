@@ -1,0 +1,7 @@
+{
+    "custom/search": {
+        "format": "",
+        "tooltip-format": "  Search",
+        "on-click": "$HOME/.local/bin/fzsearch open",
+    },
+}

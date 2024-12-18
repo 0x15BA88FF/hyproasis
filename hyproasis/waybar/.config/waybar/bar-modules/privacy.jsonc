@@ -1,0 +1,21 @@
+{
+    "privacy": {
+        "icon-size": 9,
+        "icon-spacing": 4,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip-icon-size": 12,
+            },
+            {
+                "type": "audio-out",
+                "tooltip-icon-size": 12,
+            },
+            {
+                "type": "audio-in",
+                "tooltip-icon-size": 12,
+            },
+        ],
+    },
+}

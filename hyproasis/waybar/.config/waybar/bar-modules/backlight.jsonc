@@ -1,0 +1,32 @@
+{
+    "group/backlight": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "transition-left-to-right": false,
+        },
+        "modules": [
+            "backlight",
+            "backlight/slider",
+            "custom/padd"
+        ],
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon}",
+        "format-icons": [
+            "",
+            "󰃜",
+            "󰃛",
+            "",
+            "󰃞",
+            "󰃟",
+            "󰃠"
+        ],
+        "on-scroll-up": "brightnessctl set 5%+",
+        "on-scroll-down": "brightnessctl set 5%-",
+    },
+    "backlight/slider": {
+        "device": "intel_backlight",
+    },
+}

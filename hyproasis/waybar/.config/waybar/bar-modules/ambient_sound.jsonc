@@ -1,0 +1,8 @@
+{
+  "custom/ambient_sound": {
+    "format": "󰽰",
+    "tooltip-format": "󰽰 Ambient Sound",
+    "on-click": "$HOME/.local/bin/ambientsound menu",
+    "interval": "once",
+  },
+}

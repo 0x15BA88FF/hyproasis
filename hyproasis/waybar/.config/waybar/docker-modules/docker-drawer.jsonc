@@ -1,0 +1,9 @@
+{
+    "group/docker-drawer": {
+        "orientation": "vertical",
+        "modules": [
+            "custom/target",
+            "group/drawer"
+        ]
+    }
+}

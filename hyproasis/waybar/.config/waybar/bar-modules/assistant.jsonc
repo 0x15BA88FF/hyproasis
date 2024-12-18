@@ -1,0 +1,8 @@
+{
+  "custom/assistant": {
+    "format": "󰜍",
+    "tooltip-format": "󰜍  Assistant",
+    "on-click": "$HOME/.local/bin/assistant toggle",
+    "interval": "once",
+  },
+}

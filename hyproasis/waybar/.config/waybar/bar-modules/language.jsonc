@@ -1,0 +1,9 @@
+{
+    "hyprland/language": {
+        "format": "",
+        "on-click": "$HOME/.local/bin/kbdlanguage menu",
+        "on-scroll-up": "$HOME/.local/bin/kbdlanguage next",
+        "on-scroll-down": "$HOME/.local/bin/kbdlanguage prev",
+        "interval": "once",
+    },
+}

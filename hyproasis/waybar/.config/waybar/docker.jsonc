@@ -1,0 +1,18 @@
+{
+    "mod": "dock",
+    "layer": "top",
+    "position": "bottom",
+    "exclusive": false,
+    "passthrough": false,
+    "reload_style_on_change": true,
+    "modules-center": [
+        "group/docker-drawer",
+    ],
+    "include": [
+        "~/.config/waybar/docker-modules/taskbar.jsonc",
+        "~/.config/waybar/docker-modules/customs.jsonc",
+
+        "~/.config/waybar/docker-modules/docker-drawer.jsonc",
+        "~/.config/waybar/docker-modules/docker-group.jsonc",
+    ]
+}

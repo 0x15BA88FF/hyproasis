@@ -1,0 +1,44 @@
+{
+    "group/network": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "transition-left-to-right": true,
+        },
+        "modules": [
+            "network",
+            "custom/padd",
+            "network#essid"
+        ],
+    },
+    "network": {
+        "format": "{icon}",
+        "format-wifi": "{icon}",
+        "format-linked": "󰈀",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰖪",
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ],
+        "tooltip-format-disconnected": "󰖪  Disconnected",
+        "tooltip-format": "󰌘  {essid}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+        "tooltip-format-wifi": "{icon} {essid}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+        "tooltip-format-ethernet": "󰈀  {ifname}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+    },
+    "network#essid": {
+        "format": "{essid}",
+        "format-wifi": "{essid}",
+        "format-ethernet": "Ethernet",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "Disconnected",
+        "tooltip-format-disconnected": "󰖪  Disconnected",
+        "tooltip-format": "󰌘  {essid}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+        "tooltip-format-wifi": "{icon} {essid}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+        "tooltip-format-ethernet": "󰈀  {ifname}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+        "max-length": 20,
+    },
+}

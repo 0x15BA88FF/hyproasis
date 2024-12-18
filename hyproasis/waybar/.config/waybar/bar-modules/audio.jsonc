@@ -1,0 +1,67 @@
+{
+    "group/audio": {
+        "orientation": "inherit",
+        "modules": [
+            "group/pulseaudio",
+        ],
+    },
+    "group/pulseaudio": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "transition-left-to-right": false,
+        },
+        "modules": [
+            "pulseaudio",
+            "pulseaudio/slider",
+            "custom/padd"
+        ],
+    },
+    "group/pulseaudio#microphone": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "transition-left-to-right": false,
+        },
+        "modules": [
+            "pulseaudio#mic",
+            "pulseaudio#mic/slider",
+            "custom/padd"
+        ],
+    },
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-muted": "婢",
+        "tooltip-format": "{icon} {desc} | {volume}%",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "pavucontrol -t 3",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ],
+        },
+    },
+    "pulseaudio#mic": {
+        "format": "{format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "tooltip-format": "{format_source} {source_desc} | {source_volume}%",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+        "on-click-right": "pavucontrol -t 4",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%-",
+    },
+    "backlight#mic/slider": {
+        "device": "alsa_output.pci-0000_00_14.2.pro-output-0",
+    },
+}

@@ -1,0 +1,25 @@
+{
+    "group/bluetooth": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "transition-left-to-right": true,
+        },
+        "modules": [
+            "bluetooth",
+            "bluetooth#device_name"
+        ],
+    },
+    "bluetooth": {
+        "format": "󰂯",
+        "format-connected": "󰂱",
+        "tooltip-format": "󰂯 Bluetooth",
+        "tooltip-format-connected": "󰂱 {device_enumerate}",
+    },
+    "bluetooth#device_name": {
+        "format": "{device_alias}",
+        "format-disabled": "Disabled",
+        "tooltip-format": "󰂯 Bluetooth",
+        "tooltip-format-connected": "󰂱 {device_enumerate}",
+    },
+}

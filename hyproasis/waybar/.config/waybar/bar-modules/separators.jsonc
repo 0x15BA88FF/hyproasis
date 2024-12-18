@@ -1,0 +1,22 @@
+{
+    "custom/start": {
+        "format": " ",
+        "interval": "once",
+        "tooltip": false,
+    },
+    "custom/end": {
+        "format": " ",
+        "interval": "once",
+        "tooltip": false,
+    },
+    "custom/padd": {
+        "format": " ",
+        "interval": "once",
+        "tooltip": false,
+    },
+    "custom/space": {
+        "format": " ",
+        "interval": "once",
+        "tooltip": false,
+    },
+}

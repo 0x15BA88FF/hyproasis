@@ -1,0 +1,12 @@
+{
+    "hyprland/window": {
+        "format": " {}",
+        "max-length": 30,
+        "separate-outputs": true,
+        "on-click": "rofi -show drun",
+        "rewrite": {
+            "(.*)Mozilla Firefox": "$1 󰈹",
+            "(.*)Visual Studio Code": "$1 󰨞",
+        },
+    },
+}

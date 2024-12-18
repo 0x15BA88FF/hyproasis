@@ -1,0 +1,9 @@
+{
+    "custom/power": {
+        "format": "",
+        "tooltip-format": "  Logout",
+        "on-click": "wlogout -b 6 -c 10 --protocol layer-shell",
+        "on-click-right": "hyprlock",
+        "interval": "once",
+    },
+}

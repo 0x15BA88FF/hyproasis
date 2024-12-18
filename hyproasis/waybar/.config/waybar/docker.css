@@ -1,0 +1,48 @@
+@import "./colors.css";
+
+* {
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    font-size: 12px;
+    background-image: none;
+    border: 0 solid @background;
+    transition: all 0.3s ease-in-out;
+    font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-erif;
+}
+
+window {
+    color: @on_surface;
+    background-color: transparent;
+}
+
+tooltip {
+    background: @background;
+    border-width: 2px;
+    border-radius: 10px;
+}
+
+#docker-drawer { margin-bottom: -50px; }
+#docker-drawer:hover { margin-bottom: 10px; }
+
+#taskbar {
+    padding: 4px;
+    background: @background;
+    border: 2px solid @on_secondary;
+    border-radius: 16px;
+}
+
+#taskbar button {
+    margin: 2px;
+    padding: 8px;
+    border-radius: 12px;
+}
+
+#taskbar button:hover {
+    background: @on_secondary;
+}
+
+#taskbar button.active {
+    color: @background;
+    background: @primary;
+}

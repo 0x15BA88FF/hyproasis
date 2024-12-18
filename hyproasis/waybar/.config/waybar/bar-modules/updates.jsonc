@@ -1,0 +1,9 @@
+{
+    "custom/updates": {
+        "format": "{}",
+        "return-type": "json",
+        "exec": "$HOME/.local/bin/updates status",
+        "on-click": "$HOME/.local/bin/updates update",
+        "interval": 86400,
+    },
+}

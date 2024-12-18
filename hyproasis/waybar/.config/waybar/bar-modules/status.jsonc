@@ -1,0 +1,18 @@
+{
+    "group/status": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "transition-left-to-right": false,
+        },
+        "modules": [
+            "battery",
+            "disk",
+            "custom/padd",
+            "memory",
+            "custom/padd",
+            "cpu",
+            "custom/padd",
+        ],
+    },
+}

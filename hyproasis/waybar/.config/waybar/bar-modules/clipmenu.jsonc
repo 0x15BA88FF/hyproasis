@@ -1,0 +1,10 @@
+{
+    "custom/clipmenu": {
+        "format": "",
+        "tooltip-format": "󰅇 Clipmenu",
+        "on-click": "$HOME/.local/bin/clipmenu copy",
+        "on-click-right": "$HOME/.local/bin/clipmenu delete",
+        "on-click-middle": "$HOME/.local/bin/clipmenu clear",
+        "interval": "once",
+    },
+}

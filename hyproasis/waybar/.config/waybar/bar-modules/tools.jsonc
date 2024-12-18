@@ -1,0 +1,30 @@
+{
+    "group/tools": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "transition-left-to-right": false,
+        },
+        "modules": [
+            "custom/clipmenu",
+            "hyprland/language",
+            "custom/padd",
+            "custom/assistant",
+            "custom/padd",
+            "custom/ambient_sound",
+            "custom/padd",
+            "custom/shader",
+            "custom/padd",
+            "custom/mode",
+            "custom/padd",
+            "custom/colorpicker",
+            "custom/padd",
+            "custom/search",
+            "custom/padd",
+            "custom/screencapture",
+            "custom/padd",
+            "custom/wallpaper",
+            "custom/padd",
+        ],
+    },
+}

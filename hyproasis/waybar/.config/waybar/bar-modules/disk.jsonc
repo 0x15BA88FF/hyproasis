@@ -1,0 +1,8 @@
+{
+    "disk": {
+        "interval": 60,
+        "format": "󰋊 {percentage_used}%",
+        "tooltip-format": "{specific_used:0.2f} GB/{specific_total:0.2f} GB",
+        "unit": "GB",
+    },
+}

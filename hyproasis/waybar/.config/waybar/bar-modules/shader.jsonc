@@ -1,0 +1,9 @@
+{
+    "custom/shader": {
+        "format": "",
+        "tooltip-format": "  Screen shader",
+        "on-click": "$HOME/.local/bin/hyprshader menu",
+        "on-click-right": "hyprshade off",
+        "interval": "once",
+    },
+}

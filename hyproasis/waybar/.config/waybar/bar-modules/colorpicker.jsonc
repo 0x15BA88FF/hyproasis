@@ -1,0 +1,9 @@
+{
+    "custom/colorpicker": {
+        "format": "",
+        "tooltip-format": "  Color picker",
+        "on-click": "~/.local/bin/colorpicker hex",
+        "on-click-right": "~/.local/bin/colorpicker menu",
+        "interval": "once",
+    },
+}
