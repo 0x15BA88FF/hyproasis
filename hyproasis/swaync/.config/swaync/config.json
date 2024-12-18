@@ -1,0 +1,103 @@
+{
+    "$schema": "/etc/xdg/swaync/configSchema.json",
+    "layer-shell": true,
+    "positionY": "top",
+    "positionX": "right",
+    "layer": "overlay",
+    "cssPriority": "user",
+    "notification-window-width": 340,
+    "notification-inline-replies": true,
+    "notification-icon-size": 48,
+    "fit-to-screen": true,
+    "control-center-width": 350,
+    "hide-on-clear": true,
+    "hide-on-action": true,
+    "widgets": [
+        "menubar",
+        "dnd",
+        "notifications",
+        "mpris",
+        "buttons-grid"
+    ],
+    "widget-config": {
+        "menubar": {
+            "menu#power": {
+                "label": "",
+                "actions": [
+                    {
+                        "label": "Lock",
+                        "command": "loginctl lock-session"
+                    },
+                    {
+                        "label": "Logout",
+                        "command": "hyprctl dispatch exit 0"
+                    },
+                    {
+                        "label": "Reboot",
+                        "command": "systemctl reboot"
+                    },
+                    {
+                        "label": "Shutdown",
+                        "command": "systemctl poweroff"
+                    },
+                    {
+                        "label": "Hibernate",
+                        "command": "systemctl hibernate"
+                    }
+                ]
+            },
+            "buttons#shortcuts": {
+                "position": "left",
+                "actions": [
+                    {
+                        "label": "󰅇",
+                        "command": "clipmenu copy"
+                    },
+                    {
+                        "label": "󰸉",
+                        "command": "wallpaper menu"
+                    },
+                    {
+                        "label": "󰟡",
+                        "command": "mode menu"
+                    }
+                ]
+            }
+        },
+        "buttons-grid": {
+            "actions": [
+                {
+                    "label": "",
+                    "command": "screencapture menu"
+                },
+                {
+                    "label": "󰟡",
+                    "command": "mode menu"
+                },
+                {
+                    "label": "",
+                    "command": "hyprshader menu"
+                },
+                {
+                    "label": "",
+                    "command": "colorpicker menu"
+                },
+                {
+                    "label": "󰽰",
+                    "command": "ambience menu"
+                },
+                {
+                    "label": "󰜍",
+                    "command": "assistant open"
+                },
+                {
+                    "label": "",
+                    "command": "kbdlanguage menu"
+                }
+            ]
+        },
+        "mpris": {
+            "image-size": 72
+        }
+    }
+}

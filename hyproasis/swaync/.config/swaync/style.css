@@ -1,0 +1,82 @@
+@import "./colors.css";
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-shadow: none;
+    color: inherit;
+    background-image: none;
+    border: 0 solid @background;
+}
+
+switch {
+    padding: 2px;
+    border-radius: 999px;
+    background-color: @surface_container;
+}
+switch:checked { background-color: @primary; }
+switch slider, switch:checked slider { background: @on_secondary; }
+
+.notification, .control-center {
+    margin: 8px;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    color: @on_surface;
+    background-color: @surface;
+}
+
+.notification { padding: 1rem; border: 2px solid @on_secondary; }
+.notification-group { padding-left: 1rem; }
+.notification-group-headers, .notification-group-buttons { margin: 0.5rem 0; }
+.notification-default-action:hover { background-color: transparent }
+.notification image.image { margin-right: 0.5rem; }
+
+.widget-dnd, .control-center-list, .widget-mpris { margin: 0.5rem; }
+
+.widget-menubar button {
+    padding: 0.5rem 0.7rem 0.5rem 0.5rem;
+    border-radius: 0.8rem
+}
+.widget-menubar button:hover { background-color: @on_secondary; }
+
+.widget-menubar revealer > box {
+    margin-top: 0.25rem;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    background-color: @on_secondary;
+}
+.widget-menubar revealer button {
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    background-color: @on_secondary;
+}
+.widget-menubar revealer button:hover { background-color: @surface; }
+
+
+.widget-mpris-player {
+    padding: 0.5rem;
+    background: @surface;
+}
+.widget-mpris-player button {
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    margin-top: 1rem;
+}
+.widget-mpris-title { font-size: 1.25rem; }
+.widget-mpris-subtitle { font-size: 1rem; }
+
+
+.widget-buttons-grid {
+    padding: 0.25rem;
+    border-radius: 0.6rem;
+    background-color: @on_secondary;
+}
+
+.widget-buttons-grid button {
+    padding: 0.5rem 0.7rem 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+    color: @secondary;
+    background-color: @on_secondary;
+}
+.widget-buttons-grid button:hover { background-color: @surface; }
