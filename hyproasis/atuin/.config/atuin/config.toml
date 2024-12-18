@@ -1,0 +1,66 @@
+session_path = "$XDG_DATA_HOME/history/.session"
+db_path = "$XDG_DATA_HOME/history/.history.db"
+key_path = "$XDG_DATA_HOME/history/.key"
+
+dialect = "us"
+timezone = "local"
+
+auto_sync = true
+update_check = true
+sync_frequency = "20m"
+sync_address = "https://api.atuin.sh"
+
+search_mode = "fuzzy" # prefix, fulltext, fuzzy, skim
+filter_mode = "global" # global, host, session, directory
+search_mode_shell_up_key_binding = "fuzzy"
+filter_mode_shell_up_key_binding = "global"
+
+style = "auto" # auto, full, compact
+inline_height = 20
+max_preview_height = 4
+invert = false
+show_preview = false
+
+show_help = true
+show_tabs = false
+
+exit_mode = "return-original" # return-original, return-query
+word_jump_mode = "emacs" # emacs, subl
+ctrl_n_shortcuts = false
+
+history_format = "{time}\t{command}\t{duration}"
+
+# https://docs.rs/regex/latest/regex/#syntax
+cwd_filter = [ ]
+history_filter = [ ]
+secrets_filter = true
+
+enter_accept = false
+keymap_mode = "auto" # auto, emacs, vim-normal, vim_insert
+
+## Available values: "default" and "{blink,steady}-{block,underline,bar}".
+keymap_cursor = { emacs = "blink-bar", vim_insert = "blink-bar", vim_normal = "steady-block" }
+prefers_reduced_motion = false
+
+network_connect_timeout = 10
+network_timeout = 10
+local_timeout = 10
+
+[stats]
+common_subcommands = [
+    "apt", "cargo", "composer", "dnf", "docker", "git", "go", "ip", "kubectl",
+    "nix", "nmcli", "npm", "pecl", "pnpm", "podman", "port", "systemctl",
+    "tmux", "yarn",
+]
+
+common_prefix = ["sudo"]
+
+ignored_commands = [
+    "cd", "ls", "clear", "tree", "fetch", "top"
+]
+
+[keys]
+scroll_exits = true
+
+[sync]
+records = true
