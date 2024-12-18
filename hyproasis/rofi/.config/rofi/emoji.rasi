@@ -1,0 +1,75 @@
+@theme "./colors.rasi"
+
+configuration {
+    modi:                        [ drun ];
+    show-icons:                  false;
+    font:                        "JetBrainsMono Nerd Font 10";
+}
+
+window {
+    enabled:                     true;
+    width:                       280px;
+    height:                      405px;
+    border-radius:               15px;
+    background-color:            @surface;
+}
+
+mainbox {
+    enabled:                     true;
+    spacing:                     10px;
+    background-color:            transparent;
+    children:                    [ inputbar, listbox ];
+}
+
+inputbar {
+    enabled:                     true;
+    padding:                     8px 8px 0px 8px;
+    background-color:            @surface;
+    children:                    [ entry ];
+}
+
+entry {
+    enabled:                     true;
+    padding:                     15px;
+    border-radius:               10px;
+    text-color:                  @surface;
+    background-color:            @primary;
+}
+
+listbox {
+    padding:                     0px 8px 8px 8px;
+    background-color:            @surface;
+    children:                    [ listview ];
+}
+
+listview {
+    enabled:                     true;
+    columns:                     5;
+    fixed-columns:               true;
+    layout:                      vertical;
+    flow:                        horizontal;
+    text-color:                  @on-surface;
+    background-color:            transparent;
+}
+
+element {
+    enabled:                     true;
+    padding:                     12px;
+    border-radius:               10px;
+    cursor:                      pointer;
+    text-color:                  @on-surface;
+    background-color:            transparent;
+}
+
+element selected.normal {
+    background-color:            @on-secondary;
+}
+
+element-text {
+    cursor:                      inherit;
+    text-color:                  inherit;
+    background-color:            transparent;
+    font:                        "noto 14";
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}

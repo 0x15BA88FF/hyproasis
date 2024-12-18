@@ -1,0 +1,166 @@
+@theme "./colors.rasi"
+
+configuration {
+    modi:                       [ combi, drun, run, window ];
+    show-icons:                 true;
+    display-combi:              "ALL";
+    display-drun:               "APP";
+    display-run:                "RUN";
+    display-window:             "WINDOW";
+    drun-display-format:        "{name}";
+    font:                        "JetBrains Mono Nerd Font 10";
+}
+
+window {
+    enabled:                     true;
+    width:                       400px;
+    height:                      520px;
+    border-radius:               15px;
+    background-color:            @surface;
+}
+
+mainbox {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     10px;
+    background-color:            transparent;
+    children:                    [ inputbar, mode-switcher, listbox ];
+}
+
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     15px;
+    border-radius:               10px;
+    background-color:            @primary;
+    text-color:                  @surface;
+    children:                    [ textbox-prompt, entry ];
+}
+
+textbox-prompt {
+    enabled:                     true;
+    expand:                      false;
+    str:                         " ";
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+
+entry {
+    enabled:                     true;
+    background-color:            inherit;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "Search";
+    placeholder-color:           inherit;
+}
+
+mode-switcher {
+    enabled:                     true;
+    spacing:                     8px;
+    padding:                     5px;
+    border-radius:               10px;
+    background-color:            @on-secondary;
+    text-color:                  @on-surface;
+}
+
+listbox {
+    enabled:                     true;
+    spacing:                     20px;
+    background-color:            transparent;
+    children:                    [ message, listview ];
+}
+
+button {
+    padding:                     10px;
+    border-radius:               10px;
+    cursor:                      pointer;
+    text-color:                  inherit;
+    background-color:            @surface;
+}
+
+button selected {
+    text-color:                  @surface;
+    background-color:            @primary;
+}
+
+listview {
+    enabled:                     true;
+    lines:                       7;
+    text-color:                  @on-surface;
+    background-color:            transparent;
+}
+
+element {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     10px;
+    border-radius:               10px;
+    cursor:                      pointer;
+    text-color:                  @on-surface;
+    background-color:            transparent;
+}
+
+element normal.normal {
+    text-color:                  inherit;
+    background-color:            inherit;
+}
+
+element normal.urgent {
+    text-color:                  @on-surface;
+    background-color:            @error;
+}
+
+element normal.active {
+    text-color:                  @on-surface;
+    background-color:            @on-secondary;
+}
+
+element selected.normal {
+    text-color:                  @on-surface;
+    background-color:            @on-secondary;
+}
+
+element selected.urgent {
+    background-color:            @error;
+    text-color:                  @on-surface;
+}
+
+element selected.active {
+    text-color:                  @on-surface;
+    background-color:            @error;
+}
+
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        42px;
+    cursor:                      inherit;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+message {
+    background-color:            @on-secondary;
+}
+
+error-message {
+    padding:                     15px;
+    border-radius:               20px;
+    background-color:            @surface;
+    text-color:                  @on-surface;
+}
+
+textbox {
+    padding:                     15px;
+    border-radius:               10px;
+    background-color:            @on-secondary;
+    text-color:                  @on-surface;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
