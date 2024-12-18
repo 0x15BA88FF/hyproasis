@@ -1,0 +1,20 @@
+# Directories
+.git
+venv
+dist
+build
+uninstowed
+node_modules
+
+# Files
+*.log
+*.tmp
+*.swp
+*.bak
+*.lock
+
+README
+.DS_Store
+Thumbs.db
+.zcompdump
+package-lock.json
