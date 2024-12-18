@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+reload_gtk() {
+    gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+    lookandfeeltool -a org.kde.breezedark.desktop 2>/dev/null
+}
