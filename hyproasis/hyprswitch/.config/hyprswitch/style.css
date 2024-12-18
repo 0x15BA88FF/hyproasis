@@ -1,0 +1,53 @@
+@import "./colors.css";
+
+* { all: unset; }
+
+.monitor {
+    opacity: 0.9;
+    padding: 0.5rem;
+    background-color: var(--background);
+    border: 2px solid var(--surface-container);
+    border-radius: 2rem;
+}
+
+.monitor_active { opacity: 1; }
+
+
+.workspace {
+    font-size: 0;
+    margin: 0.5rem;
+    padding: 0.25rem 0.5rem 0.5rem 0.5rem;
+    background-color: var(--surface-container);
+    border-radius: 1rem;
+    border: none;
+}
+
+.workspace_special { background-color: var(--secondary); }
+.workspace_special:hover { background-color: var(--secondary-fixed); }
+.workspace:hover { background-color: var(--surface-container-high); }
+
+
+.client {
+    margin: 0.25rem;
+    background-color: var(--surface-container-high);
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.client-image { margin: 1rem; }
+.client:hover { background-color: var(--surface-container-highest); }
+
+.client_active { background-color: var(--primary); }
+.client_active .index { color: var(--on-primary); }
+
+.client_active:hover { background-color: var(--primary-fixed); }
+.client_active:hover .index { color: var(--on-primary-fixed); }
+
+
+.index {
+    margin: 0.5rem;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+}
