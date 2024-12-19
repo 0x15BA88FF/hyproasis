@@ -1,0 +1,50 @@
+[mpd]
+mpd_port = 6600
+mpd_host = localhost
+mpd_music_dir = ~/Music
+
+mpd_crossfade_time = 2
+lyrics_directory = ~/.local/share/lyrics
+
+[visualizer]
+visualizer_look = 󰝤󰝤
+visualizer_color = blue
+visualizer_in_stereo = no
+visualizer_autoscale = yes
+visualizer_type = spectrum
+visualizer_output_name = Visualizer Feed
+
+[headers]
+header_visibility = no
+playlist_shorten_total_times = yes
+alternative_header_first_line_format = "   {%t}|{%f} "
+alternative_header_second_line_format = "{$4$b%a$/b$9}{$3 - %b$9}{$4 - (%y)$9}|{$4%f$9}"
+
+[statusbar]
+progressbar_look = 󰝤󰝤󰝤
+statusbar_visibility = no
+song_status_format = "{%a} - {%t}|{%f} - {%b} ({%y})"
+
+[appearance]
+titles_visibility = no
+user_interface = alternative
+connected_message_on_startup = no
+
+song_library_format = " {%n} │ {%t}|{%f} "
+song_list_format = "$5 {%a} │ {%t}|{$8%f$9} $R │ {%l} "
+song_columns_list_format = "(4f)[red]{NE:No.} (20)[blue]{a} (30f)[cyan]{t|f:Title} (20)[blue]{br} (7f)[red]{lr:Length}"
+
+browser_playlist_prefix = "$2 playlist $9 "
+
+current_item_prefix = "$(green)$r"
+current_item_suffix = "$/r$(end)"
+current_item_inactive_column_prefix = "$(blue)$r"
+current_item_inactive_column_suffix = "$/r$(end)"
+
+[global]
+lines_scrolled = 3
+mouse_support = yes
+tags_separator = " │ "
+empty_tag_marker = ""
+follow_now_playing_lyrics = yes
+screen_switcher_mode = playlist, media_library

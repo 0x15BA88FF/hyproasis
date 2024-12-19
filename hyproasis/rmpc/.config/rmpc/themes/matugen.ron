@@ -1,0 +1,116 @@
+#![enable(implicit_some)]
+#![enable(unwrap_newtypes)]
+#![enable(unwrap_variant_newtypes)]
+(
+    album_art_position: Right,
+    album_art_width_percent: 40,
+    default_album_art_path: None,
+    draw_borders: true,
+    show_song_table_header: false,
+    symbols: (song: " ", dir: " ", marker: "󰐾 ", ellipsis: ".."),
+    progress_bar: (
+        symbols: ["━", "", " "],
+        track_style: (bg: None),
+        elapsed_style: (fg: "#f0dfd8", bg: None),
+        thumb_style: (fg: "#f0dfd8", bg: None),
+    ),
+    scrollbar: (
+        symbols: ["", "", "", ""],
+        track_style: (),
+        ends_style: (),
+        thumb_style: (fg: "#d7c2b9"),
+    ),
+    browser_column_widths: [20, 38, 42],
+    text_color: "#ffb690",
+    background_color: None,
+    header_background_color: None,
+    modal_background_color: None,
+    tab_bar: (
+        enabled: false,
+        active_style: (fg: "black", bg: "#f0dfd8", modifiers: "Bold"),
+        inactive_style: (),
+    ),
+    borders_style: (fg: "#271e19"),
+    highlighted_item_style: (fg: "#ebe4aa", modifiers: "Bold"),
+    current_item_style: (fg: "#ffdbca", bg: "#532202", modifiers: "Bold"),
+    highlight_border_style: (fg: "#532202"),
+    song_table_format: [
+        (
+            prop: (kind: Property(Artist), style: (fg: "#ffb690"), default: (kind: Text("Unknown"))),
+            width_percent: 40,
+            alignment: Left,
+        ),
+        (
+            prop: (kind: Property(Title), style: (fg: "#ffb690"), default: (kind: Text("Unknown"))),
+            width_percent: 60,
+            alignment: Right,
+        ),
+    ],
+    header: (
+        rows: [
+            (
+                left: [
+                    (kind: Text(" ")),
+                    (kind: Text(""), style: (fg: "#ffb690", modifiers: "Bold")),
+                    (kind: Property(Status(State)), style: (fg: "#1a120e", bg: "#ffb690", modifiers: "Bold")),
+                    (kind: Text(""), style: (fg: "#ffb690", modifiers: "Bold"))
+                ],
+                center: [
+                    (kind: Text(""), style: (fg: "#ffb690", modifiers: "Bold")),
+                    (
+                        kind: Property(Song(Artist)), style: (fg: "#1a120e", bg: "#ffb690", modifiers: "Bold"),
+                        default: (kind: Text("Unknown"), style: (fg: "#1a120e", bg: "#ffb690", modifiers: "Bold"))
+                    ),
+                    (
+                        kind: Text(" - "), style: (fg: "#1a120e", bg: "#ffb690", modifiers: "Bold"),
+                    ),
+                    (
+                        kind: Property(Song(Title)), style: (fg: "#1a120e", bg: "#ffb690", modifiers: "Bold"),
+                        default: (kind: Text("Unknown"), style: (fg: "#1a120e", bg: "#ffb690", modifiers: "Bold"))
+                    ),
+                    (kind: Text(""), style: (fg: "#ffb690", modifiers: "Bold"))
+                ],
+                right: [
+                    (kind: Text(""), style: (fg: "#ffb690", modifiers: "Bold")),
+                    (kind: Text("Vol: "), style: (fg: "#1a120e", bg: "#ffb690", modifiers: "Bold")),
+                    (kind: Property(Status(Volume)), style: (fg: "#1a120e", bg: "#ffb690", modifiers: "Bold")),
+                    (kind: Text("% "), style: (fg: "#1a120e", bg: "#ffb690", modifiers: "Bold")),
+                    (kind: Text(""), style: (fg: "#ffb690", modifiers: "Bold")),
+                    (kind: Text(" "))
+                ]
+            ),
+            (
+                left: [(kind: Text(""))],
+                center: [(kind: Text(""))],
+                right: [(kind: Text(""))],
+            ),
+            (
+                left: [
+                    (kind: Text(" ")),
+                    (kind: Property(Status(Elapsed))),
+                    (kind: Text(" / ")),
+                    (kind: Property(Status(Duration))),
+                    (kind: Text(" (")),
+                    (kind: Property(Status(Bitrate))),
+                    (kind: Text(" kbps)"))
+                ],
+                center: [(kind: Text(""))],
+                right: [
+                    (
+                        kind: Property(Widget(States(
+                            active_style: (fg: "#f0dfd8", modifiers: "Bold"),
+                            separator_style: (fg: "#f0dfd8")))
+                        ),
+                        style: (fg: "#e6beab")
+                    ),
+                    (kind: Text(" "))
+                ]
+            ),
+            (
+                left: [(kind: Text(""))],
+                center: [(kind: Text(""))],
+                right: [(kind: Text(""))],
+            )
+        ],
+    ),
+)
