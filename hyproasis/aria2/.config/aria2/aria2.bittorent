@@ -1,0 +1,5 @@
+seed-time=240
+seed-ratio=5.0
+max-upload-limit=128K
+bt-seed-unverified=false
+max-overall-upload-limit=1M
