@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+
+import SimpleHTTPServer
+
+nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map
+nmap[""] = "text/plain";
+
+for key, value in map.items():
+    tmap[key] = value + ";charset=UTF-8";
+    SimpleHTTPServer.test();
