@@ -78,7 +78,7 @@ highlight {
 }
 
 #mpris {
-    padding: 0 8px;
+    padding: 0 11px;
     border-radius: 999px;
     color: @background;
     background: @background;
