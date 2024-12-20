@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SHADER_DIR="$HOME/.config/hypr/shaders/"
+SHADER_DIR="$HOME/.local/share/hyprland/shaders/"
 DMENU_CONFIG="$HOME/.config/rofi/controls.rasi"
 
 shadermenu() {
