@@ -78,25 +78,25 @@ highlight {
 }
 
 #mpris {
-    padding: 0 11px;
+    padding: 0 8px;
     border-radius: 999px;
-    color: @background;
     background: @background;
     animation: gradient 5s linear infinite;
 }
 
 #cava, #mpris.paused {
-    background: linear-gradient(90deg, #dd5e89 0%, #f7bb97 50%, #dd5e89 100%);
+    /*background: linear-gradient(90deg, @secondary 0%, @tertiary 50%, @secondary 100%);*/
     background-size: 400% 400%;
 }
 
 #mpris.playing {
-    background: linear-gradient(90deg, #89b4fa 0%, #ffc8dd 50%, #89b4fa 100%);
+    color: @background;
+    background: linear-gradient(90deg, @primary 0%, @secondary 50%, @primary 100%);
     background-size: 400% 400%;
 }
 
 #privacy {
-    padding: 10px 10px;
+    padding: 8px 10px;
     color: @error;
     border-radius: 999px;
     background: @background;

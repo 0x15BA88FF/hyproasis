@@ -37,12 +37,16 @@ font_mono = "JetBrainsMonoNerdFont-Regular"
 [templates.tty]
 input_path = "./templates/tty.sh"
 output_path = "~/.config/shell/colors"
-# post_hook = "sh ~/.config/shell/colors"
+post_hook = "sh ~/.config/shell/colors"
 
 [templates.kitty]
 input_path = "./templates/kitty.conf"
 output_path = "~/.config/kitty/colors.conf"
 post_hook = "pkill -SIGUSR1 kitty"
+
+[templates.ghostty]
+input_path = "./templates/ghostty-theme"
+output_path = "~/.config/ghostty/themes/matugen"
 
 [templates.gtk3]
 input_path = "./templates/gtk.css"

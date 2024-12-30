@@ -1,0 +1,5 @@
+curl -fsS https://dotenvx.sh | sh
+curl -L https://coder.com/install.sh | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"

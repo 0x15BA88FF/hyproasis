@@ -1,24 +1,24 @@
 theme[main_bg]=""
 
-theme[main_fg]="#f0dfd8"
-theme[title]="#f0dfd8"
+theme[main_fg]="#f0dfd7"
+theme[title]="#f0dfd7"
 
-theme[hi_fg]="#ffb690"
-theme[inactive_fg]="#322823"
+theme[hi_fg]="#ffb787"
+theme[inactive_fg]="#312823"
 
-theme[selected_bg]="#413732"
-theme[selected_fg]="#cec891"
+theme[selected_bg]="#413731"
+theme[selected_fg]="#caca93"
 
-theme[graph_text]="#f0dfd8"
-theme[meter_bg]="#413732"
-theme[proc_misc]="#f0dfd8"
+theme[graph_text]="#f0dfd7"
+theme[meter_bg]="#413731"
+theme[proc_misc]="#f0dfd7"
 
-theme[cpu_box]="#ffb690" 
-theme[mem_box]="#e6beab" 
-theme[net_box]="#cec891" 
+theme[cpu_box]="#ffb787" 
+theme[mem_box]="#e5bfa8" 
+theme[net_box]="#caca93" 
 theme[proc_box]="#ffb4ab" 
 
-theme[div_line]="#413732"
+theme[div_line]="#413731"
 
 theme[temp_start]="#b1d18a"
 theme[temp_mid]="#f5bd6f"
@@ -37,7 +37,7 @@ theme[cached_mid]="#b8c4ff"
 theme[cached_end]="#80d5d3"
 
 theme[available_start]="#f5bd6f"
-theme[available_mid]="#ffb68d"
+theme[available_mid]="#ffb688"
 theme[available_end]="#ffb3b3"
 
 theme[used_start]="#354e16"
@@ -45,13 +45,13 @@ theme[used_mid]="#b1d18a"
 theme[used_end]="#a6e3a1"
 
 theme[download_start]="#f5bd6f"
-theme[download_mid]="#ffb68d"
+theme[download_mid]="#ffb688"
 theme[download_end]="#ffb3b3"
 
 theme[upload_start]="#354e16"
 theme[upload_mid]="#b1d18a"
 theme[upload_end]="#a6e3a1"
 
-theme[process_start]="#ffb690"
-theme[process_mid]="#ffb690"
-theme[process_end]="#ffdbca"
+theme[process_start]="#ffb787"
+theme[process_mid]="#ffb787"
+theme[process_end]="#ffdcc7"

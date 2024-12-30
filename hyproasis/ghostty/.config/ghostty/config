@@ -1,0 +1,18 @@
+theme = dark:catppuccin-mocha,light:catppuccin-latte
+theme = matugen
+
+font-size = 10
+font-style = Bold
+font-feature = -liga
+font-style-bold = ExtraBold
+font-style-italic = Bold Italic
+font-family = JetBrainsMono Nerd Font
+font-style-bold-italic = ExtraBold Italic
+
+window-decoration = false
+window-padding-x = 10
+window-padding-y = 10
+window-padding-balance = true
+window-padding-color = background
+
+config-file = keybinds
