@@ -19,6 +19,8 @@ plymouth
 pavucontrol
 pipewire
 wireplumber
+pipewire-audio
+sof-firmware rtkit
 pipewire-jack
 pipewire-pulse
 pipewire-alsa
