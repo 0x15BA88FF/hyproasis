@@ -12,7 +12,6 @@ stow
 wget
 curl
 less
-dhcpcd
 networkmanager
 neovim
 plymouth
